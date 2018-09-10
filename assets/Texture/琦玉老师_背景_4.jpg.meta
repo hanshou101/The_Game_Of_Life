@@ -1,0 +1,30 @@
+{
+  "ver": "1.0.0",
+  "uuid": "d56c1ded-b3de-42fe-9327-58d866dfde6b",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "subMetas": {
+    "琦玉老师_背景_4": {
+      "ver": "1.0.3",
+      "uuid": "cca1f10b-f218-4b4f-85f4-3a645b8f6bbf",
+      "rawTextureUuid": "d56c1ded-b3de-42fe-9327-58d866dfde6b",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 1316,
+      "height": 740,
+      "rawWidth": 1316,
+      "rawHeight": 740,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

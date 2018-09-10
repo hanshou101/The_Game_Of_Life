@@ -1,0 +1,30 @@
+{
+  "ver": "1.0.0",
+  "uuid": "5aa64fa4-7dda-416b-a10b-55c03c89d4e7",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "subMetas": {
+    "鲁鲁修_背景_1": {
+      "ver": "1.0.3",
+      "uuid": "99e8290b-4648-4a67-8206-046521b2500c",
+      "rawTextureUuid": "5aa64fa4-7dda-416b-a10b-55c03c89d4e7",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 2560,
+      "height": 1600,
+      "rawWidth": 2560,
+      "rawHeight": 1600,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

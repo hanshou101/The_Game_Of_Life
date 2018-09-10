@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<!-- saved from url=(0112)file:///C:/Users/Administrator/AppData/Local/TheBrain/Temp/Notes/548542a6-0d15-4779-b811-c80090b9f0f4-Notes.html -->
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<meta http-equiv="X-UA-Compatible" content="IE=9">
+	<script type="text/javascript">
+function onload() {
+	var s = document.URL;
+	var print = /print/.test(s);
+	if (print) {
+		window.print();
+  }
+}
+	</script>
+	<title>1.Kotlin的常用易混淆语法糖</title>
+<style>
+
+
+
+
+
+
+
+
+
+body.standalone {
+  margin: 0 0 0 0;
+  width: 100%;
+  font-size: 100%;
+  background-color:  #f8f8f8;
+  color:  #000000;
+}
+body.webclient {
+  border-color: gainsboro;
+  border-style: solid;
+  border-top-width: 0px;
+  border-right-width: 0px;
+  border-bottom-width: 0px;
+}
+.base {
+  line-height: 140%;
+}
+.base {
+  padding: 2vh 6vw 2vh 6vw;
+  margin: 0;
+  min-height: 96vh;
+  background-color:  #ffffff;
+}
+.base blockquote, .base pre {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  margin: 0;
+  padding-bottom: 1ex;
+  padding-top: 0.05ex;
+  padding-left: 1em;
+  padding-right: 1em;
+  background-color:  #eeeeee;
+}
+.base h1, .base h2 {
+  line-height: 1.3em;
+  letter-spacing: 0.05ex;
+  margin-top: 0.5ex;
+  margin-bottom: 1em;
+  font-weight: 200;
+}
+.base h1:not(:first-child), .base h2:not(:first-child) {
+  margin-top: 1.35em;
+}
+.base h3 {
+  margin-bottom: 1ex;
+  margin-top: 0.5ex;
+  font-weight: normal;
+}
+.base h3:not(:first-child) {
+  margin-top: 2ex;
+}
+.base hr {
+  margin-top: 2.5em;
+  margin-bottom: 2em;
+  border: 0;
+  height: 1px;
+  background: @fgQuarter;
+  background-image: linear-gradient(to right,  #eeeeee,  #888888,  #eeeeee);
+}
+.base ul.checker, .base li.checker {
+  margin-left: 0;
+  margin-right: 0;
+  padding: 0;
+  list-style-type: none;
+}
+.base li.checker {
+  margin-left: 0.85em;
+}
+.base input[type=checkbox] {
+  font-size: 120%;
+  margin-right: 0.65em;
+}
+.base input[type=checkbox]:after {
+  content: " ";
+}
+.base a {
+  text-decoration: none;
+  pointer-events: none;
+}
+.base a:link {
+  color:  #000088;
+  background-color:  #eef8ff;
+}
+.base a:visited {
+  color:  #000088;
+  background-color:  #eef8ff;
+}
+.base a.thought-link {
+  cursor: pointer;
+  padding-right: 0.1em;
+}
+.base a.thought-link:after {
+  margin-left: 0.3em;
+  margin-right: 0;
+  content: "";
+  width: 0.8em;
+  height: 0.8em;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-image: url(images/thought-link.svg);
+  background-size: contain;
+  display: inline-block;
+  pointer-events: auto;
+}
+.base a.thought-link:hover:after {
+  cursor: pointer;
+  background-color: #8888ff;
+}
+.base a.video-link:after {
+  margin-left: 0.3em;
+  margin-right: 0;
+  content: "";
+  width: 0.8em;
+  height: 0.8em;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-image: url(images/video-play.svg);
+  background-size: contain;
+  display: inline-block;
+  pointer-events: auto;
+}
+.base a:not(.thought-link):not(.video-link):after {
+  margin-left: 0.3em;
+  margin-right: 0;
+  content: "";
+  width: 0.8em;
+  height: 0.8em;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-image: url(images/external-link.svg);
+  background-size: contain;
+  display: inline-block;
+  pointer-events: auto;
+}
+.base a:not(.thought-link):not(.video-link):hover:after {
+  cursor: pointer;
+  background-color: #8888ff;
+}
+.base a.brain-processing:after {
+  margin-left: 0.3em;
+  margin-right: 0;
+  content: "";
+  width: 0.8em;
+  height: 0.8em;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-image: url(images/spinner.gif);
+  background-size: contain;
+  display: inline-block;
+  pointer-events: auto;
+}
+
+/* Suppress toolbar, even when in inline editing mode */
+
+div.mce-fixed {
+  display: none;
+}
+.mce-spellchecker-word {
+  border-top: 0px;
+  border-bottom: 0px;
+  border-left: 0px;
+  border-right: 0px;
+  background: url(images/squiggle.svg) repeat-x bottom left;
+}
+.mce-edit-focus {
+  outline: none;
+  /* 1px dotted #333; */
+}
+.base img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+.base img.width-20p {
+  width: 20%;
+  height: auto;
+}
+.base img.width-35p {
+  width: 35%;
+  height: auto;
+}
+.base img.width-50p {
+  width: 50%;
+  height: auto;
+}
+.base img.width-65p {
+  width: 65%;
+  height: auto;
+}
+.base img.width-80p {
+  width: 80%;
+  height: auto;
+}
+.base iframe {
+  display: block;
+  width: 75vw;
+  height: 42.1875vw;
+  max-width: 100%;
+  max-height: 56.25%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.base ul.checklist {
+  list-style: none;
+  pointer-events: none;
+}
+.base ul.checklist li {
+  list-style: none;
+  pointer-events: none;
+}
+.base ul.checklist li:before {
+  padding-left: -1em;
+  margin-left: -1.35em;
+  padding-right: 0.5em;
+  width: 0.8em;
+  height: 0.8em;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: inline-block;
+  pointer-events: auto;
+  content: "";
+  padding-left: 0;
+  padding-right: 0.5em;
+}
+.base ul.checklist li:not([data-checked]):before {
+  background-image: url(images/box-unchecked.svg);
+}
+.base ul.checklist li[data-checked]:before {
+  background-image: url(images/box-checked.svg);
+}
+.base ul.checklist li[data-checked] {
+  text-decoration: line-through;
+}
+
+/* STYLE / THEME */
+
+/* -apple-system is El Capitan and iOS 9 specific, resulting in San Francisco, the new Apple platform(s) font */
+
+/* Modern */
+
+.extra {
+font-family:   -apple-system, "Segoe UI", "Helvetica Neue", Helvetica, Arial, Tahoma, Geneva, Verdana, sans-serif;
+}
+.extra ul.checklist li:not([data-checked]):before { background-image: url(images/box-unchecked.svg); }
+.extra ul.checklist li[data-checked]:before { background-image: url(images/box-checked.svg); }
+
+
+body {
+background-color: white;
+width: 800px;
+margin: 0 auto;
+}
+@media print {
+body.standalone {
+background-color: white;
+color: black;
+}
+}
+div#editable {
+width: 50em;
+margin-left: auto;
+margin-right: auto;
+}
+</style>
+</head>
+<body class="standalone" onload="onload();">
+	<div id="editable" class="base extra"><p>0.</p>
+<p>Kotlin的语法糖有很多。而且都功能较强大。</p>
+<p>&nbsp;</p>
+<p>但是，和Java的习惯用法有时候会不同（比如Java中Switch的穿透性），就是有可能会中招的地方：</p>
+<p style="padding-left: 90px;">所以，这里有必要，将一些强大的语法糖，以及一些易混淆的语法糖，单独提炼出来。</p>
+<p style="padding-left: 90px;">&nbsp;</p>
+<p>参考资料：</p>
+<p style="padding-left: 90px;"><a href="https://blog.csdn.net/qq_24531461/article/details/72850241">心有Java，细嗅Kotlin —— 细数 Kotlin 优雅的语法糖 - CSDN博客</a></p>
+<p style="padding-left: 90px;"><a href="https://www.jianshu.com/p/b8eb0fe28dad">Kotlin:05-控制流 if、when、for、while - 简书</a></p>
+<p style="padding-left: 90px;"><a href="https://www.cnblogs.com/lizo/p/7244220.html">kotlin的诸多方言（语法糖） - atheva - 博客园</a></p>
+<p style="padding-left: 90px;">&nbsp;</p>
+<p>1.一些简单的，不会引起混淆的：</p>
+<p>JavaBean：getter/setter，均以隐藏的方式存在。并且可以手动显式指定。</p>
+<p>接口可以自带方法的默认实现</p>
+<p style="padding-left: 90px;">而且，这里可以注意的是：调用父接口时，可以用super&lt;T&gt;的显式指定，来去除冲突。</p>
+<pre style="padding-left: 90px;">interface A {<br>    fun foo() { println("A") } // 默认实现, 打印"A<br>}<br>interface B {<br>    fun foo() { println("B") }<br>}<br>// 多继承时，显式指定 super.foo() 以去冲突<br>class D : A, B {<br>    override fun foo() {<br>         super&lt;A&gt;.foo()<br>         super&lt;B&gt;.foo()<br>    }<br>}</pre>
+<p>Kotlin匿名类写法、Kotlin函数变量写法、Kotlin的lambda写法（分【匿名类】和【函数变量】两种写法）。</p>
+<pre style="padding-left: 90px;">// lambda写法1<br>val runnable3 = Runnable { -&gt; println("I'm a Lambda") }<br><br>// lambda写法2<br>val runnable4 = { println("I'm a Lambda") }<br>Thread(runnable4).start()</pre>
+<p>高阶函数：</p>
+<p style="padding-left: 90px;">名字很玄乎。其实就是一个函数变量，作为方法的入参；同时，函数变量也可以作为方法的返回值。</p>
+<p style="padding-left: 90px;">（并且可以搭配扩展函数使用。）</p>
+<p>访问【Map集合】中的元素</p>
+<pre style="padding-left: 90px;">println(map["key"])   //get<br>map["key"] = value    //set</pre>
+<p>访问【Array数组】中的元素</p>
+<pre style="padding-left: 90px;">var arr = ArrayList(1,2,3);<br>println( arr[0] );<br>arr[0] = 10;</pre>
+<p>&nbsp;</p>
+<p>【<a class="thought-link" href="brain://na8bjxni3kup6hCi6LdPqA/Kotlin%E6%8C%87%E5%AE%9A%E5%8F%82%E6%95%B0%E5%88%97%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%83%A8%E5%88%86%E5%8F%82%E6%95%B0%E8%BF%9B%E8%A1%8C%E4%BC%A0%E5%8F%82">Kotlin指定参数列表中的部分参数，进行传参</a>】</p>
+<p style="padding-left: 90px;">这点，和Python，几乎是一模一样的。</p>
+<p style="padding-left: 90px;">这样子，就可以先写出一个有着多个参数的Kotlin方法</p>
+<p style="padding-left: 180px;">然后不用管每个参数的先后顺序限制</p>
+<p style="padding-left: 180px;">可以自由地传入自己所需要的参数：</p>
+<pre style="padding-left: 270px;">toast(message = "Hello", length = Toast.LENGTH_SHORT)</pre>
+<p style="padding-left: 90px;">用【等号】，指定变量名和变量值，即可。</p>
+<p style="padding-left: 180px;">（说实话，和Lisp中的有点像。）</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>2.比较强大的，不会引起混淆的：</p>
+<p>扩展函数：</p>
+<p style="padding-left: 90px;"><a class="thought-link" href="brain://ljvaby7kbU2GlAni44uhoA/2Kotlin%E7%9A%84%E9%AB%98%E7%BA%A7%E6%89%A9%E5%B1%95%E5%87%BD%E6%95%B0">2.Kotlin的高级扩展函数</a>&nbsp;。</p>
+<p style="padding-left: 90px;">&nbsp;在任何一个文件中定义，然后都可以在诸如【Activity】、【Util】之类的 &nbsp;.kt类中使用。</p>
+<p style="padding-left: 90px;">（因为预先编译的时候，就已经将【扩展函数】，加入到【静态】区域中，去了）</p>
+<p style="padding-left: 90px;">最特别的一个好处是：</p>
+<p style="padding-left: 180px;">对于已经打成 &nbsp;.jar包的类。一样可以进行拓展函数的加入。</p>
+<p style="padding-left: 180px;">增补了很多功能。</p>
+<p>【Preference&lt;T&gt;语法糖】 ：</p>
+<p style="padding-left: 90px;">原来的SP操作是这样子：</p>
+<pre style="padding-left: 90px;">context<br>.getSharedPreferences("name", Context.MODE_PRIVATE)<br>.edit()<br>.putString("key", "value")<br>.putInt("intKey", intValue)<br>.commit();</pre>
+<p style="padding-left: 90px;">『从今天起，大家如果有需要 SP 先生持久化数据的需求，只需要在我这里登记一次，剩下的，大家只需要像读写变量一样操作即可生效。』</p>
+<p style="padding-left: 180px;">在变量的声明时，引入Preference一次。</p>
+<p style="padding-left: 180px;">之后的使用，就像普通读写变量一样，即可。</p>
+<p style="padding-left: 180px;">Preference语法糖，会自动把值读取和存入。</p>
+<p style="padding-left: 90px;">最新的操作方式：</p>
+<pre style="padding-left: 90px;">var name by Preference(context, "name", "橘右京", "sp_name")<br><br>Log.d(TAG, name) // 第一次读取，只能读取到默认值，那就是 橘右京<br><br>// 进行新的存储<br>name = "不知火舞"<br>// 第二次读取<br>Log.d(TAG, name) // 这里输出的就是 不知火舞 啦</pre>
+<p style="padding-left: 90px;">Preference&lt;T&gt;的源码阅读：<a href="https://blog.csdn.net/tencent_bugly/article/details/54572894">【腾讯Bugly干货分享】你为什么需要 Kotlin - CSDN博客</a></p>
+<p style="padding-left: 90px;">&nbsp;</p>
+<p>&nbsp;</p>
+<p>3.比较强大的，容易引起混淆的：</p>
+<p>【when】</p>
+<p style="padding-left: 90px;">When 类似于 java 中的 switch ，但是功能比 switch 更为强大。</p>
+<p style="padding-left: 90px;">将 when 当做表达式使用时, 语言规范强制规定，必须要有 else 分支。（相当于Java的default分支。）</p>
+<p style="padding-left: 90px;">默认的，每个分支不需要加上break语句以防止穿透；因为Kotlin的when，已经在机制上避免了穿透。</p>
+<pre style="padding-left: 90px;">when (a) {<br>     1 -&gt; println("传入的值是1")<br>     2 -&gt; println("传入的值是2")<br>     else -&gt; {<br>          println("传入的值既不是1 也不是2")<br>     }<br> }<br><br></pre>
+<p style="padding-left: 90px;">手动可以强制指定 when 的穿透：</p>
+<p style="padding-left: 180px;">如果多个分支有相同的处理方式，则可以把多个分支条件放在一起，用逗号分隔。（这种方式类似于 java 中 switch 语句的穿透）</p>
+<pre style="padding-left: 180px;">when (a) {<br>     1, 2 -&gt; println("传入的是1 或者是2") //分支穿透<br>     else -&gt; {<br>          println("传入的既不是1 也不是2")<br>     }<br>}</pre>
+<p style="padding-left: 90px;">when的区间判断：</p>
+<p style="padding-left: 180px;">切记，要注意的是：【in】【开始..结束】的语法，是闭区间；即包含了中间值、开始值、结束值的。</p>
+<p style="padding-left: 180px;">会一直判断分支到，第一个True值为止。并且第一个符合True条件的分支执行完毕后，会跳出when这个结构体。</p>
+<pre style="padding-left: 180px;">when (a) {<br>     in 1..5 -&gt; println("$a 在 1..5 的区间之内")<br>     !in 10..15 -&gt; <br>                println("$a 不在 10..15 的区间之内")<br>     else -&gt; println("$a 在 10..15 的区间之内")<br>}</pre>
+<p style="padding-left: 90px;">when判断一个变量值的数据类型</p>
+<p style="padding-left: 180px;">检测某个值是某种类型的关键字是 is</p>
+<p style="padding-left: 180px;">检测某个值不是某种类型的关键字是 “!is”</p>
+<pre style="padding-left: 180px;">when (a) {<br>     is Int -&gt; println("$a 是 Int 类型的数据")<br>     else -&gt; println("$a 不是 Int 类型的数据")<br>}</pre>
+<p style="padding-left: 90px;">when后面也可以不跟参数和小括号</p>
+<p style="padding-left: 180px;">此时，所有的分支条件都是简单的布尔表达式。</p>
+<p style="padding-left: 180px;">而当一个分支的条件为真时则执行该分支。</p>
+<pre style="padding-left: 180px;">when {    //此处未跟参数，所以分支条件必须是 简单的    <br>          //boolean 表达式<br>     a &lt; 6  -&gt; println("$a 小于6")<br>     a == 6 -&gt; println("传入的值是6")<br>     else -&gt; println("$a 大于6")<br>}</pre>
+<p>【if】</p>
+<p>if作为三元运算符的情况：</p>
+<p style="padding-left: 90px;">这种还算比较好判断的。</p>
+<p style="padding-left: 90px;">而且if分支和else分支，其本身都是有返回值的。</p>
+<pre style="padding-left: 90px;">var max = if (a &gt; b) a else b //这种方式等同于 java 中的 三元运算</pre>
+<p>【for】</p>
+<p>Kotlin中，仅有一种for循环：【forEach循环】&nbsp;</p>
+<p>原来的Java的【for( ; ; )循环】，已经被Kotlin取消了</p>
+<p style="padding-left: 90px;">数组：最简化，最基础版</p>
+<pre style="padding-left: 180px;">for (item in collection) {<br>     print(item)<br>}</pre>
+<p style="padding-left: 90px;">数组：同时遍历【数据】和【索引】</p>
+<p style="padding-left: 180px;">这样是比较推荐的高级用法。</p>
+<pre style="padding-left: 180px;">//获取键值对，然后遍历集合中的键值对实体<br>for (  (num, index) in nums.withIndex()  ) {<br>     println(  "索引 $index 对应的数据是 $num"  )<br>}</pre>
+<p style="padding-left: 90px;">Map集合： 【键值对】</p>
+<pre style="padding-left: 180px;">for ((k, v) in map) {<br>     println("$k -&gt; $v")<br>}</pre>
+<p>&nbsp;</p>
+<p>【while】</p>
+<p style="padding-left: 90px;">while循环</p>
+<p style="padding-left: 180px;">循环：先判断，再执行。</p>
+<pre style="padding-left: 90px;">while (a &gt; 0) {<br>     println("当前a 的值是 $a")<br>     a--<br>}</pre>
+<p style="padding-left: 90px;">do……while循环</p>
+<p style="padding-left: 180px;">执行一次。</p>
+<p style="padding-left: 180px;">再循环。</p>
+<pre style="padding-left: 90px;">do {<br>     println("当前 a 的值是 $a")<br>     a--<br>} while (a &gt; 0)</pre>
+<p>&nbsp;</p>
+<p>【数字区间】</p>
+<p style="padding-left: 90px;">【in】关键字，是【闭区块】</p>
+<p style="padding-left: 90px;">【until】关键字，是【右开区间】</p>
+<p style="padding-left: 90px;">弄明白这两点，基本上【数字区间】就不会产生【混淆】了。</p>
+<pre style="padding-left: 90px;">for (i in 1..100) { ... } // 闭区间：包含100<br>for (i in 1 until 100) { ... } // 不包含100<br>for (x in 2..10 step 2) { ... } // 按照步长为2增长<br>for (x in 10 downTo 1) { ... } //<br>if (x in 1..10) { ... } //判断x是否在1到10这个区间内<br>只读map和list</pre>
+<p>&nbsp;</p>
+<p><a class="thought-link" href="brain://wr0VfCP3i0CrngfrK65Y9A/RunapplyletalsowithKotlin%E5%86%85%E7%BD%AE%E5%87%BD%E6%95%B0">【run】、【apply】、【let】、【also】、【with】：Kotlin内置函数</a></p>
+<p style="padding-left: 90px;">这里着重讲【with】：</p>
+<p style="padding-left: 180px;">&nbsp;</p>
+<p style="padding-left: 90px;">【with】</p>
+<p style="padding-left: 90px;">功能：with函数和前面的几个函数使用方式略有不同，因为它不是以扩展的形式存在的。</p>
+<p style="padding-left: 180px;">它是将某对象作为函数的参数，在函数块内可以通过 this 指代该对象。返回值为函数块的最后一行或指定return表达式。</p>
+<p style="padding-left: 90px;">示例：</p>
+<pre style="padding-left: 180px;">val a = with("string") {<br>     println(this)<br>     3<br>}<br>println(a)</pre>
+<p style="padding-left: 90px;">运行结果：</p>
+<pre style="padding-left: 180px;">string<br>3</pre>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>4.（最危险的）一些简单的，容易引起混淆的：</p>
+<p>这一节是最危险的，也是语言没有尽力优化好的部分</p>
+<p style="padding-left: 90px;">稍有不慎，就会入坑</p>
+<p>&nbsp;</p>
+<p>组成方法</p>
+<p style="padding-left: 90px;">这里，一旦成员变量的前后顺序发生了变化，或是顺序中间插入了一个成员变量</p>
+<p style="padding-left: 90px;">那是不是全乱套了？</p>
+<pre style="padding-left: 90px;">data class Person(val name:String ,val age:Int)<br><br>println(p.component1()) //获取第一个成员变量<br>println(p.component2()) //获取第二个成立变量<br> <br>var (name,age) = p; //把第一个和第二个变量分别赋值给 name 和age ，注意是根据顺序，而不是名字</pre>
+<p>&nbsp;</p>
+<p>【扩展属性】</p>
+<p style="padding-left: 90px;">这个看上去有很多限制的样子。。。。</p>
+<p style="padding-left: 90px;">暂时定作，不怎么用得到+易混淆</p>
+<p>【扩展操作符】</p>
+<p style="padding-left: 90px;">这个看上去，也似乎用到的场景不是很多？</p>
+<p style="padding-left: 90px;">等用到了之后，马上就去学 （假如能有很大用处的话）</p>
+<p>&nbsp;</p>
+<p>5.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+	</div>
+
+</body></html>

@@ -1,0 +1,30 @@
+{
+  "ver": "1.0.0",
+  "uuid": "320348e4-66b0-497e-8cf2-1a3fe7e4942f",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "subMetas": {
+    "进击的巨人_背景_4": {
+      "ver": "1.0.3",
+      "uuid": "8befb4e8-22ca-4f5d-ac54-ac2f4609fac1",
+      "rawTextureUuid": "320348e4-66b0-497e-8cf2-1a3fe7e4942f",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 1366,
+      "height": 571,
+      "rawWidth": 1366,
+      "rawHeight": 571,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}
