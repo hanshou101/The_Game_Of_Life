@@ -14,16 +14,16 @@ const { ccclass, property } = cc._decorator;
 export default class NewClass extends cc.Component {
 
     @property(cc.AudioClip)
-    choose_role_bgm: cc.AudioClip = null
+    choose_role_bgm: string = null;     // api上，略有差别
 
     @property(cc.Node)
-    role_A_click: cc.Node = null
+    role_A_click: cc.Node = null;
 
     @property(cc.Node)
-    role_B_click: cc.Node = null
+    role_B_click: cc.Node = null;
 
     @property(cc.Node)
-    back_bg: cc.Node = null
+    back_bg: cc.Node = null;
 
     onLoad() {
         this.role_A_click.on(
@@ -31,14 +31,14 @@ export default class NewClass extends cc.Component {
             (event) => {
                 cc.director.loadScene('role_A')
             }
-        )
+        );
 
         this.role_B_click.on(
             cc.Node.EventType.TOUCH_END,
             (event) => {
                 cc.director.loadScene('role_B')
             }
-        )
+        );
 
         this.back_bg.on(
             cc.Node.EventType.TOUCH_END,
@@ -57,7 +57,7 @@ export default class NewClass extends cc.Component {
 
 
         //预先加载下一场景页面
-        cc.director.preloadScene('role_A')
+        cc.director.preloadScene('role_A');
         cc.director.preloadScene('role_B')
 
     }
